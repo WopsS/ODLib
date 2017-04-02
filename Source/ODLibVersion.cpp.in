@@ -1,0 +1,16 @@
+#include <ODLib.hpp>
+
+const uint32_t ODLib::Version::Id()
+{
+    return %i;
+}
+
+const std::string ODLib::Version::String()
+{
+    return "%s";
+}
+
+const std::wstring ODLib::Version::WString()
+{
+    return L"%s";
+}

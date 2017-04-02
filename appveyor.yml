@@ -1,0 +1,42 @@
+clone_depth: 1
+image: Visual Studio 2017
+version: $(informational_version)+{branch}.{build}
+
+build:
+  verbosity: minimal
+
+configuration:
+  - Debug
+  - Release
+
+environment:
+  informational_version: '0.1.0'
+  premake_dir: $(APPVEYOR_BUILD_FOLDER)\Premake
+  real_platform: x86
+
+platform:
+  - Win32
+  - x64
+
+pull_requests:
+  do_not_increment_build_number: true
+
+init:
+  - ps: >-
+      if ($env:platform -eq "x64")
+      {
+        $env:real_platform = "x86_64"
+      }
+
+install:
+  - ps: appveyor DownloadFile https://github.com/premake/premake-core/releases/download/v5.0.0-alpha11/premake-5.0.0-alpha11-windows.zip
+  - ps: 7z e premake-*-windows.zip -o"$env:premake_dir"
+
+before_build:
+  - ps: cd "$env:premake_dir"
+  - ps: ./GenerateVisualStudioProject.bat $env:real_platform
+
+artifacts:
+  - path: Build\$(configuration)\$(real_platform)
+    name: ODLib
+    type: zip
