@@ -1,8 +1,8 @@
 project("ODLib")
     kind("StaticLib")
     language("C++")
-    pchheader("ODLib.hpp")
-    pchsource("ODLib.cpp")
+    pchheader("ODLib/ODLib.hpp")
+    pchsource("ODLib/ODLib.cpp")
     targetdir(buildpath())
 
     filter({ "configurations:Debug" })
@@ -15,4 +15,4 @@ project("ODLib")
 
     includedirs({ "." })
 
-    files({  "**.cpp", "**.hpp" })
+    files({  "ODLib/**.cpp", "ODLib/**.hpp" })
