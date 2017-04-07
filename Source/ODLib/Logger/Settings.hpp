@@ -17,12 +17,12 @@ namespace ODLib
             /// <summary>
             /// File name of the log.
             /// </summary>
-            std::string FileName = "logs/%Y-%m-%d-%M.log";
+            std::string FileName = "logs/%Y-%m-%d.log";
 
             /// <summary>
             /// How the log file should be open, use <see cref="std::ios"/>.
             /// </summary>
-            uint32_t FileMode = std::ios::ate;
+            std::ios_base::openmode FileMode = std::ios_base::app;
         };
     }
 }
