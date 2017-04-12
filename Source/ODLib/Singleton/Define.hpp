@@ -19,8 +19,10 @@ public: \
     static void Release(); \
 private: \
     friend std::unique_ptr<Class>::deleter_type; \
-    Class(Class const&) = delete; \
-    Class& operator=(Class const&) = delete; \
+    Class(const Class&) = delete; \
+    Class(Class&&) = delete; \
+    Class& operator=(const Class&) = delete; \
+    Class& operator=(Class&&) = delete; \
     static std::unique_ptr<Class> m_instance; \
     static std::once_flag m_constructFlag; \
     static std::once_flag m_releaseFlag;
