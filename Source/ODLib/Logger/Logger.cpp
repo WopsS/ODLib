@@ -38,7 +38,7 @@ void ODLib::Logger::Logger::CreateFileIfNeeded()
     }
 
     // Format the time for the file.
-    std::ostringstream Result;
+    std::wostringstream Result;
 
     auto Time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     Result << std::put_time(std::localtime(&Time), m_settings.FileName.c_str());
