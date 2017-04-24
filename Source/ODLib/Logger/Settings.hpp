@@ -17,7 +17,7 @@ namespace ODLib
             /// <summary>
             /// File name of the log.
             /// </summary>
-            std::string FileName = "logs/%Y-%m-%d.log";
+            std::wstring FileName = "logs/%Y-%m-%d.log";
 
             /// <summary>
             /// How the log file should be open, use <see cref="std::ios"/>.
