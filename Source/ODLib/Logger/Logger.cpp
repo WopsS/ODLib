@@ -55,7 +55,11 @@ void ODLib::Logger::Logger::CreateFileIfNeeded()
         std::experimental::filesystem::create_directories(FileDirectory);
     }
 
+#ifdef _WIN32
+    m_file.open(FileName, m_settings.FileMode);
+#else
     m_file.open(std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(FileName).c_str(), m_settings.FileMode);
+#endif
 
     // Move the input position indicator to the end of the file.
     m_file.seekg(0, std::ios::end);
