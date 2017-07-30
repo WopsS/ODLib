@@ -5,7 +5,7 @@ basepath = path.getdirectory(os.getcwd());
 buildpath = function() return path.join(basepath, "Build", "%{cfg.buildcfg}", "%{cfg.architecture}").."/" end
 sourcepath = function() return path.join(basepath, "Source").."/" end
 
-Version:format("../Source/ODLib/Version.cpp.in")
+Version:format("../Source/ODLib/Version.hpp.in")
 
 newoption {
     trigger     = "architecture",

@@ -7,16 +7,16 @@ namespace ODLib
         /// <summary>
         /// Get ODLib's version as an integer.  
         /// </summary>  
-        const uint32_t Id = 100;
+        const uint32_t Id = %i;
 
         /// <summary>
         /// Get ODLib's version as a string.  
         /// </summary>  
-        const std::string String = "0.1.0";
+        const std::string String = "%s";
 
         /// <summary>
         /// Get ODLib's version as a wstring.  
         /// </summary>  
-        const std::wstring WString = L"0.1.0";
+        const std::wstring WString = L"%s";
     }
 }
