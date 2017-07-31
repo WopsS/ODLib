@@ -1,0 +1,22 @@
+#pragma once
+
+namespace odlib
+{
+    namespace version
+    {
+        /// <summary>
+        /// Get ODLib's version as an integer.  
+        /// </summary>  
+        const uint32_t id = %i;
+
+        /// <summary>
+        /// Get ODLib's version as a string.  
+        /// </summary>  
+        const std::string string = "%s";
+
+        /// <summary>
+        /// Get ODLib's version as a wstring.  
+        /// </summary>  
+        const std::wstring wstring = L"%s";
+    }
+}
