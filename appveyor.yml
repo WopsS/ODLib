@@ -10,7 +10,7 @@ configuration:
   - Release
 
 environment:
-  informational_version: '0.1.0'
+  informational_version: '0.8.0'
   premake_dir: $(APPVEYOR_BUILD_FOLDER)\Premake
   real_platform: x86
 

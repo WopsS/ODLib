@@ -1,7 +1,7 @@
 Version = {}
 
 Version.Major = 0
-Version.Minor = 1
+Version.Minor = 8
 Version.Patch = 0
 
 function Version:format(inputFile)
