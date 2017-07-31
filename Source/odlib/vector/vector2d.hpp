@@ -2,12 +2,20 @@
 
 namespace odlib
 {
+    /// <summary>
+    /// Vector2D class.
+    /// </summary>
+    /// <typeparam name="T">The type of <see cref="odlib::vector2d::x"/> and <see cref="odlib::vector2d::y"/>.</typeparam>
     template<typename T>
     class vector2d
     {
     public:
 
-        vector2d() = default;
+        vector2d()
+            : x(T())
+            , y(T())
+        {
+        }
 
         vector2d(const T x, const T y)
             : x(x)
@@ -25,8 +33,8 @@ namespace odlib
             : x(std::move(Vector.x))
             , y(std::move(Vector.y))
         {
-            Vector.x = 0;
-            Vector.y = 0;
+            Vector.x = T();
+            Vector.y = T();
         }
 
         ~vector2d() = default;
@@ -61,9 +69,9 @@ namespace odlib
             return x >= rhs.x && y >= rhs.y;
         }
 
-        float operator[](int32_t Index) const
+        float operator[](int32_t index) const
         {
-            return Index == 0 ? x : y;
+            return index == 0 ? x : y;
         }
 
         vector2d operator+(const vector2d& rhs) const

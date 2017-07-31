@@ -2,12 +2,20 @@
 
 namespace odlib
 {
+    /// <summary>
+    /// Rectangle class.
+    /// </summary>
+    /// <typeparam name="T">The type of <see cref="odlib::rectangle::height"/> and <see cref="odlib::rectangle::width"/>.</typeparam>
     template<typename T>
     class rectangle
     {
     public:
 
-        rectangle() = default;
+        rectangle()
+            : width(T())
+            , height(T())
+        {
+        }
 
         rectangle(const T width, const T height)
             : width(width)
@@ -25,8 +33,8 @@ namespace odlib
             : width(std::move(rectangle.width))
             , height(std::move(rectangle.height))
         {
-            rectangle.width = 0;
-            rectangle.height = 0;
+            rectangle.width = T();
+            rectangle.height = T();
         }
 
         ~rectangle() = default;
@@ -61,9 +69,9 @@ namespace odlib
             return width >= rhs.width && height >= rhs.height;
         }
 
-        float operator[](int32_t Indewidth) const
+        float operator[](int32_t index) const
         {
-            return Indewidth == 0 ? width : height;
+            return index == 0 ? width : height;
         }
 
         rectangle operator+(const rectangle& rhs) const

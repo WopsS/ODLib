@@ -2,12 +2,22 @@
 
 namespace odlib
 {
+    /// <summary>
+    /// Vector3D class.
+    /// </summary>
+    /// <typeparam name="T">The type of <see cref="odlib::vector3d::x"/>, <see cref="odlib::vector3d::y"/> and <see cref="odlib::vector3d::z"/>.</typeparam>
     template<typename T>
     class vector3d
     {
     public:
 
-        vector3d() = default;
+        vector3d()
+            : x(T())
+            , y(T())
+            , z(T())
+        {
+
+        }
 
         vector3d(const T x, const T y, const T z)
             : x(x)
@@ -28,9 +38,9 @@ namespace odlib
             , y(std::move(Vector.y))
             , z(std::move(Vector.z))
         {
-            Vector.x = 0;
-            Vector.y = 0;
-            Vector.z = 0;
+            Vector.x = T();
+            Vector.y = T();
+            Vector.z = T();
         }
 
         ~vector3d() = default;
@@ -65,13 +75,13 @@ namespace odlib
             return x >= rhs.x && y >= rhs.y && z >= rhs.z;
         }
 
-        float operator[](int32_t Index) const
+        float operator[](int32_t index) const
         {
-            if (Index == 0)
+            if (index == 0)
             {
                 return x;
             }
-            else if (Index == 1)
+            else if (index == 1)
             {
                 return y;
             }

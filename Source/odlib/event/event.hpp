@@ -2,6 +2,10 @@
 
 namespace odlib
 {
+    /// <summary>
+    /// A class that can act as an event.
+    /// </summary>
+    /// <typeparam name="T">The type of the function for the event.</typeparam>
     template<typename T>
     class event
     {
@@ -10,6 +14,10 @@ namespace odlib
         event() = default;
         ~event() = default;
 
+        /// <summary>
+        /// Notify the subscribers.
+        /// </summary>
+        /// <typeparam name="Args">The arguments for the function of the event.</typeparam>
         template<typename... Args>
         void notify(Args&& ...args)
         {
@@ -19,6 +27,11 @@ namespace odlib
             }
         }
 
+        /// <summary>
+        /// Subscribe a function to the event.
+        /// </summary>
+        /// <param name="key">Key of the subscriber.</param>
+        /// <param name="function">Function to call when the subscribers are notify.</param>
         void subscribe(const std::wstring& key, const std::function<T> function)
         {
             auto subscriber = m_subscribers.find(key);
@@ -37,6 +50,10 @@ namespace odlib
             }
         }
 
+        /// <summary>
+        /// Unsubscribe a function to the event.
+        /// </summary>
+        /// <param name="key">Key of the subscriber.</param>
         void unsubscribe(const std::wstring& key)
         {
             auto subscriber = m_subscribers.find(key);

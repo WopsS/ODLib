@@ -2,10 +2,19 @@
 
 namespace odlib
 {
+    /// <summary>
+    /// A class that can contains settings for the application.
+    /// </summary>
     class settings
     {
     public:
 
+        /// <summary>
+        /// Add a setting.
+        /// </summary>
+        /// <param name="key">Key of the setting.</param>
+        /// <param name="value">Value of the setting.</param>
+        /// <typeparam name="T">The type of the value.</typeparam>
         template<typename T>
         void add(const std::wstring& key, const T value)
         {
@@ -22,8 +31,19 @@ namespace odlib
             }
         }
 
+        /// <summary>
+        /// Check if the setting exists.
+        /// </summary>
+        /// <param name="key">Key of the setting.</param>
+        /// <returns>True if the key exists, false otherwise.</returns>
         bool exist(const std::wstring& key);
 
+        /// <summary>
+        /// Get the value of a setting.
+        /// </summary>
+        /// <param name="key">Key of the setting.</param>
+        /// <typeparam name="T">The desire type of the setting.</typeparam>
+        /// <returns>The value of the setting.</returns>
         template<typename T>
         const T get(const std::wstring& key)
         {
@@ -47,8 +67,19 @@ namespace odlib
             return result;
         }
 
+        /// <summary>
+        /// Remove a setting.
+        /// </summary>
+        /// <param name="key">Key of the setting.</param>
         const void remove(const std::wstring& key);
 
+        /// <summary>
+        /// Set the value of a setting.
+        /// </summary>
+        /// <param name="key">Key of the setting.</param>
+        /// <param name="value">Value of the setting.</param>
+        /// <typeparam name="T">The type of the setting.</typeparam>
+        /// <remarks>If a setting doesn't exists it will be added.</remarks>  
         template<typename T>
         void set(const std::wstring& key, const T value)
         {
