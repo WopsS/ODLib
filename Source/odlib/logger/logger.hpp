@@ -39,7 +39,7 @@ namespace odlib
 }
 
 #ifdef ODLIB_ASYNCHRONOUS_LOGGING_AS_DEFAULT
-#define LOG(level) *(odlib::logger::asynchronous::GetInstance()) += odlib::logger::record::record(level)
+#define LOG(level) *(odlib::logger::asynchronous::get_instance()) += odlib::logger::record::record(level)
 #else
 #define LOG(level) *(odlib::logger::synchronous::get_instance()) += odlib::logger::record::record(level)
 #endif
