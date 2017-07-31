@@ -36,7 +36,7 @@ namespace odlib
                 /// <summary>
                 /// Get the level of the record.
                 /// </summary>
-                /// <returns><see cref="ODLib::Logger::Record::Level"/> of the record.</returns>
+                /// <returns><see cref="odlib::logger::record::level"/> of the record.</returns>
                 const odlib::logger::record::level::level& get_level() const;
 
                 /// <summary>

@@ -1,5 +1,5 @@
-#include <ODLib/ODLib.hpp>
-#include <ODLib/Logger/Logger.hpp>
+#include <odlib/odlib.hpp>
+#include <odlib/logger/logger.hpp>
 
 odlib::logger::logger::logger(odlib::logger::settings settings)
     : m_settings(settings)
