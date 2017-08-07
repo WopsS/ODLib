@@ -35,6 +35,17 @@ namespace odlib
 
                 return true;
             }
+
+            template<typename T, typename Elem>
+            const bool is_valid(const std::basic_string<Elem>& text)
+            {
+                T value;
+
+                std::basic_istringstream<Elem> stream(text);
+                stream >> value;
+
+                return stream.eof() && (stream.fail() == false);
+            }
         }
     }
 }
