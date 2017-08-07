@@ -6,13 +6,35 @@ namespace odlib
     {
         namespace number
         {
-            const bool is_float(const std::string& text);
+            template<typename T>
+            const bool is_float(const std::basic_string<T>& text)
+            {
+                float number;
 
-            const bool is_float(const std::wstring& text);
+                std::basic_istringstream<T> stream(text);
+                stream >> std::noskipws >> number;
 
-            const bool is_integer(const std::string& text);
+                return stream.eof() && (stream.fail() == false);
+            }
 
-            const bool is_integer(const std::wstring& text);
+            template<typename T>
+            const bool is_integer(const std::basic_string<T>& text)
+            {
+                if (text.length() == 0)
+                {
+                    return false;
+                }
+
+                for (size_t i = 0; i < text.length(); i++)
+                {
+                    if (std::isdigit(text[i], std::locale()) == false)
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
         }
     }
 }

@@ -6,9 +6,20 @@ namespace odlib
     {
         namespace string
         {
-            std::vector<std::string> split(const std::string& text, const char delimiter);
+            template<typename T>
+            std::vector<std::basic_string<T>> split(const std::basic_string<T>& text, const T delimiter)
+            {
+                std::vector<std::basic_string<T>> result;
+                std::basic_stringstream<T> stream(text);
+                std::basic_string<T> string;
 
-            std::vector<std::wstring> split(const std::wstring& text, const wchar_t delimiter);
+                while (std::getline(stream, string, delimiter))
+                {
+                    result.push_back(std::move(string));
+                }
+
+                return result;
+            }
         }
     }
 }
