@@ -20,6 +20,34 @@ namespace odlib
 
                 return result;
             }
+
+            template<typename T>
+            std::basic_string<T> ltrim(std::basic_string<T> text, const std::locale& locale = std::locale())
+            {
+                text.erase(text.begin(), std::find_if(text.begin(), text.end(), [&locale](T character)
+                {
+                    return !std::isspace<T>(character, locale);
+                }));
+
+                return text;
+            }
+
+            template<typename T>
+            std::basic_string<T> rtrim(std::basic_string<T> text, const std::locale& locale = std::locale())
+            {
+                text.erase(std::find_if(text.rbegin(), text.rend(), [&locale](T character)
+                {
+                    return !std::isspace<T>(character, locale);
+                }).base(), text.end());
+
+                return text;
+            }
+
+            template<typename T>
+            std::basic_string<T> trim(std::basic_string<T> text, const std::locale& locale = std::locale())
+            {
+                return ltrim(rtrim(text, locale));
+            }
         }
     }
 }
