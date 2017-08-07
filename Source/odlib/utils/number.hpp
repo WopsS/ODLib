@@ -18,7 +18,7 @@ namespace odlib
             }
 
             template<typename T>
-            const bool is_integer(const std::basic_string<T>& text)
+            const bool is_integer(const std::basic_string<T>& text, const std::locale& locale = std::locale())
             {
                 if (text.length() == 0)
                 {
@@ -27,7 +27,7 @@ namespace odlib
 
                 for (size_t i = 0; i < text.length(); i++)
                 {
-                    if (std::isdigit(text[i], std::locale()) == false)
+                    if (std::isdigit(text[i], locale) == false)
                     {
                         return false;
                     }
