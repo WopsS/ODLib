@@ -7,6 +7,28 @@ namespace odlib
         namespace number
         {
             template<typename T>
+            const bool is_double(const std::basic_string<T>& text)
+            {
+                double number;
+
+                std::basic_istringstream<T> stream(text);
+                stream >> std::noskipws >> number;
+
+                return stream.eof() && (stream.fail() == false);
+            }
+
+            template<typename T>
+            const bool is_long_double(const std::basic_string<T>& text)
+            {
+                double number;
+
+                std::basic_istringstream<T> stream(text);
+                stream >> std::noskipws >> number;
+
+                return stream.eof() && (stream.fail() == false);
+            }
+
+            template<typename T>
             const bool is_float(const std::basic_string<T>& text)
             {
                 float number;
