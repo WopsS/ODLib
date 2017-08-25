@@ -1,12 +1,13 @@
-compiler: g++-6
+compiler: g++-7
 dist: trusty
 language: cpp
-sudo: required
 
 addons:
   apt:
     packages:
-      - g++-6-multilib
+      - g++-7-multilib
+      - libmariadbclient-dev:i386
+      - linux-libc-dev:i386
     sources:
       - ubuntu-toolchain-r-test
 
@@ -22,14 +23,6 @@ env:
 git:
   depth: 1
 
-before_install:
-  - sudo -E dpkg --add-architecture i386
-  - sudo -E apt-get -yq update
-  - sudo -E update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 50 --slave /usr/bin/g++ g++ /usr/bin/g++-6
-
-install:
-  - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install linux-libc-dev:i386
-
 before_script:
   - wget https://github.com/premake/premake-core/releases/download/v5.0.0-alpha12/premake-5.0.0-alpha12-linux.tar.gz
   - tar xzf premake-*-linux.tar.gz -C ${PREMAKE_DIR}
@@ -39,4 +32,4 @@ script:
   - chmod 755 ./GenerateGNUMakeProject.sh
   - ./GenerateGNUMakeProject.sh ${ARCHITECTURE}
   - cd Project
-  - make config=${CONFIGURATION,,}
+  - make config=${CONFIGURATION,,} CXX=g++-7
