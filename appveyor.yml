@@ -29,7 +29,7 @@ init:
       }
 
 install:
-  - ps: appveyor DownloadFile https://github.com/premake/premake-core/releases/download/v5.0.0-alpha11/premake-5.0.0-alpha11-windows.zip
+  - ps: appveyor DownloadFile https://github.com/premake/premake-core/releases/download/v5.0.0-alpha12/premake-5.0.0-alpha12-windows.zip
   - ps: 7z e premake-*-windows.zip -o"$env:premake_dir"
 
 before_build:
