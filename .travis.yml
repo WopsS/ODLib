@@ -31,7 +31,7 @@ install:
   - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install linux-libc-dev:i386
 
 before_script:
-  - wget https://github.com/premake/premake-core/releases/download/v5.0.0-alpha11/premake-5.0.0-alpha11-linux.tar.gz
+  - wget https://github.com/premake/premake-core/releases/download/v5.0.0-alpha12/premake-5.0.0-alpha12-linux.tar.gz
   - tar xzf premake-*-linux.tar.gz -C ${PREMAKE_DIR}
 
 script:

@@ -1,4 +1,4 @@
-require("premake", ">=5.0.0-alpha11")
+require("premake", ">=5.0.0-alpha12")
 include("version.lua")
 
 basepath = path.getdirectory(os.getcwd());
@@ -21,12 +21,16 @@ newoption {
 workspace("ODLib")
     characterset("Unicode")
     configurations({ "Debug", "Release" })
+    cppdialect("C++17")
     defines({ "_CRT_SECURE_NO_WARNINGS" })
-    flags({ "C++14" })
     location("Project")
+
+    filter({ "configurations:Debug" })
+        symbols("On")
 
     filter({ "configurations:Release" })
         optimize("On")
+        symbols("Off")
 
     filter({ "options:architecture=x86" })
         architecture("x86")
