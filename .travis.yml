@@ -6,7 +6,6 @@ addons:
   apt:
     packages:
       - g++-7-multilib
-      - libmariadbclient-dev:i386
       - linux-libc-dev:i386
     sources:
       - ubuntu-toolchain-r-test
