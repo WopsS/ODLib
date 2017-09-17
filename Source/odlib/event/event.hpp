@@ -44,10 +44,12 @@ namespace odlib
                 LOG_DEBUG << L"A subscriber with key " << std::quoted(key) << L" was added";
 #endif
             }
+#ifdef _DEBUG
             else
             {
                 LOG_WARNING << L"A subscriber with key " << std::quoted(key) << L" already exists";
             }
+#endif
         }
 
         /// <summary>
@@ -66,10 +68,12 @@ namespace odlib
                 LOG_DEBUG << L"A subscriber with key " << std::quoted(key) << L" was removed";
 #endif
             }
+#ifdef _DEBUG
             else
             {
                 LOG_WARNING << L"A subscriber with key " << std::quoted(key) << L" doesn't exists";
             }
+#endif
         }
 
     private:
