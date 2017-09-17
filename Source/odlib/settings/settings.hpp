@@ -20,10 +20,7 @@ namespace odlib
         {
             if (exist(key) == false)
             {
-                std::wostringstream result;
-                result << value;
-
-                m_settings.emplace(key, result.str());
+                m_settings.emplace(key, value);
             }
             else
             {
@@ -47,24 +44,21 @@ namespace odlib
         template<typename T>
         const T get(const std::wstring& key)
         {
-            T result;
-
             if (exist(key) == true)
             {
-                std::wstringstream stream;
-                wchar_t temp;
-
-                stream << m_settings.at(key);
-                stream >> result;
-
-                // If we still have something in the stream it may be a string, so we need all of its content.
-                while (stream >> std::noskipws >> temp)
+                try
                 {
-                    result += temp;
+                    return std::any_cast<T>(m_settings.at(key));
+                }
+                catch (const std::bad_any_cast&)
+                {
+#ifdef _DEBUG
+                    LOG_ERROR << L"Bad cast for the setting with key " << std::quoted(key);
+#endif
                 }
             }
 
-            return result;
+            return T();
         }
 
         /// <summary>
@@ -85,10 +79,7 @@ namespace odlib
         {
             if (exist(key) == true)
             {
-                std::wstringstream result;
-
-                result << value;
-                result >> m_settings.at(key);
+                m_settings.at(key) = value;
             }
             else
             {
@@ -101,7 +92,7 @@ namespace odlib
         settings() = default;
         ~settings() = default;
 
-        std::map<std::wstring, std::wstring> m_settings;
+        std::map<std::wstring, std::any> m_settings;
 
         ODLIB_SINGLETON_IMPLEMENT_HEADER(settings)
     };
