@@ -55,16 +55,17 @@ namespace odlib
         {
             if (exist(key) == true)
             {
+#ifndef _DEBUG
                 try
+#endif
                 {
                     return std::any_cast<T>(m_settings.at(key));
                 }
+#ifndef _DEBUG
                 catch (const std::bad_any_cast&)
                 {
-#ifdef _DEBUG
-                    LOG_ERROR << L"Bad cast for the setting with key " << std::quoted(key);
-#endif
                 }
+#endif
             }
 
             return T();

@@ -32,48 +32,36 @@ namespace odlib
         /// </summary>
         /// <param name="key">Key of the subscriber.</param>
         /// <param name="function">Function to call when the subscribers are notify.</param>
-        void subscribe(const std::wstring& key, const std::function<T> function)
+        /// <returns>True if the subscriber doesn't exist and was added, false otherwise.</returns>
+        bool subscribe(const std::wstring& key, const std::function<T> function)
         {
             auto subscriber = m_subscribers.find(key);
 
             if (subscriber == m_subscribers.end())
             {
                 m_subscribers.emplace(key, function);
+                return true;
+            }
 
-#ifdef _DEBUG
-                LOG_DEBUG << L"A subscriber with key " << std::quoted(key) << L" was added";
-#endif
-            }
-#ifdef _DEBUG
-            else
-            {
-                LOG_WARNING << L"A subscriber with key " << std::quoted(key) << L" already exists";
-            }
-#endif
+            return false;
         }
 
         /// <summary>
         /// Unsubscribe a function to the event.
         /// </summary>
         /// <param name="key">Key of the subscriber.</param>
-        void unsubscribe(const std::wstring& key)
+        /// <returns>True if the subscriber exist and was removed, false otherwise.</returns>
+        bool unsubscribe(const std::wstring& key)
         {
             auto subscriber = m_subscribers.find(key);
 
             if (subscriber != m_subscribers.end())
             {
                 m_subscribers.erase(subscriber);
+                return true;
+            }
 
-#ifdef _DEBUG
-                LOG_DEBUG << L"A subscriber with key " << std::quoted(key) << L" was removed";
-#endif
-            }
-#ifdef _DEBUG
-            else
-            {
-                LOG_WARNING << L"A subscriber with key " << std::quoted(key) << L" doesn't exists";
-            }
-#endif
+            return false;
         }
 
     private:
