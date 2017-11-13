@@ -66,6 +66,6 @@ namespace odlib
 
     private:
 
-        std::map<std::wstring, std::function<T>> m_subscribers;
+        std::unordered_map<std::wstring, std::function<T>> m_subscribers;
     };
 }

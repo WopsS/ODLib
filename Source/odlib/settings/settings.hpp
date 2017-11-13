@@ -99,6 +99,6 @@ namespace odlib
 
     private:
 
-        static std::map<std::wstring, std::any> m_settings;
+        static std::unordered_map<std::wstring, std::any> m_settings;
     };
 }

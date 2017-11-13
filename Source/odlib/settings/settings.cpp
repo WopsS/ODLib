@@ -1,7 +1,7 @@
 #include <odlib/odlib.hpp>
 #include <odlib/settings/settings.hpp>
 
-std::map<std::wstring, std::any> odlib::settings::m_settings;
+std::unordered_map<std::wstring, std::any> odlib::settings::m_settings;
 
 bool odlib::settings::exist(const std::wstring& key)
 {
