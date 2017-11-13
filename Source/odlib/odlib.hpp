@@ -10,13 +10,13 @@
 #include <iostream>
 #include <iterator>
 #include <locale>
-#include <map>
 #include <memory>
 #include <mutex>
 #include <queue>
 #include <sstream>
 #include <string>
 #include <thread>
+#include <unordered_map>
 
 #include <odlib/version.hpp>
 #include <odlib/singleton/define.hpp>
