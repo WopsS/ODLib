@@ -7,6 +7,28 @@ namespace odlib
         namespace string
         {
             template<typename T>
+            std::basic_string<T> to_lower(std::basic_string<T> text, const std::locale& locale = std::locale())
+            {
+                std::transform(text.begin(), text.end(), text.begin(), [&locale](T character)
+                {
+                    return std::tolower(character, locale);
+                });
+
+                return text;
+            }
+
+            template<typename T>
+            std::basic_string<T> to_upper(std::basic_string<T> text, const std::locale& locale = std::locale())
+            {
+                std::transform(text.begin(), text.end(), text.begin(), [&locale](T character)
+                {
+                    return std::toupper(character, locale);
+                });
+
+                return text;
+            }
+
+            template<typename T>
             std::vector<std::basic_string<T>> split(const std::basic_string<T>& text, const T delimiter)
             {
                 std::vector<std::basic_string<T>> result;
