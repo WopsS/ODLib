@@ -6,6 +6,7 @@
 #include <codecvt>
 #include <experimental/filesystem>
 #include <fstream>
+#include <functional>
 #include <iomanip>
 #include <iostream>
 #include <iterator>
