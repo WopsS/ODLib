@@ -47,9 +47,9 @@ namespace odlib
                     return false;
                 }
 
-                for (size_t i = 0; i < text.length(); i++)
+                for (auto& c : text)
                 {
-                    if (std::isdigit(text[i], locale) == false)
+                    if (c != '-' && std::isdigit(c, locale) == false)
                     {
                         return false;
                     }
