@@ -13,6 +13,6 @@ project("ODLib")
 
     filter({})
 
-    includedirs({ "." })
+    includedirs({ ".", "./utfcpp/source" })
 
     files({  "odlib/**.cpp", "odlib/**.hpp" })

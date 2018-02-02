@@ -19,6 +19,7 @@
 #include <thread>
 #include <unordered_map>
 
+#include <utf8.h>
 #include <odlib/version.hpp>
 #include <odlib/singleton/define.hpp>
 #include <odlib/singleton/singleton.hpp>

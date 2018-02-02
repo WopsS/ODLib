@@ -70,6 +70,30 @@ namespace odlib
             {
                 return ltrim(rtrim(text, locale));
             }
+
+            std::u16string utf8_to_16(const std::string& text);
+
+            std::u16string utf8_to_16(const std::string_view text);
+
+            std::u32string utf8_to_32(const std::string& text);
+
+            std::u32string utf8_to_32(const std::string_view text);
+
+            std::wstring utf8_to_wide(const std::string& text);
+
+            std::wstring utf8_to_wide(const std::string_view text);
+
+            std::string utf16_to_8(const std::u16string& text);
+
+            std::string utf16_to_8(const std::u16string_view text);
+
+            std::string utf32_to_8(const std::u32string& text);
+
+            std::string utf32_to_8(const std::u32string_view text);
+
+            std::string wide_to_utf8(const std::wstring& text);
+
+            std::string wide_to_utf8(const std::wstring_view text);
         }
     }
 }

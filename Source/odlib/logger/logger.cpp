@@ -1,5 +1,6 @@
 #include <odlib/odlib.hpp>
 #include <odlib/logger/logger.hpp>
+#include <odlib/utils/string.hpp>
 
 odlib::logger::logger::logger(odlib::logger::settings settings)
     : m_settings(settings)
@@ -55,11 +56,7 @@ void odlib::logger::logger::create_file_if_needed()
         std::experimental::filesystem::create_directories(file_directory);
     }
 
-#ifdef _WIN32
-    m_file.open(file_name, m_settings.file_mode);
-#else
-    m_file.open(std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(file_name).c_str(), m_settings.file_mode);
-#endif
+    m_file.open(utils::string::wide_to_utf8(file_name), m_settings.file_mode);
 
     // Move the input position indicator to the end of the file.
     m_file.seekg(0, std::ios::end);
